@@ -1,0 +1,5 @@
+let años = 30;
+let ciudadResidencia = "Cali";
+let nombre2 = "Diana Angélica Rodríguez Rodríguez"
+
+console.log("Hola mi nombre es: " + nombre2 + " tengo " + años + " años y vivo en " + ciudadResidencia);
