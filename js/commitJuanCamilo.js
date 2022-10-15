@@ -3,4 +3,4 @@ let ciudad = "Bogotá D.C";
 let nombre = "Juan Camilo Silva Zabala"
 
 
-console.log("Hola" + nombre + "tengo" + edad + "años" + "y vivo en " + ciudad);
+console.log("Hola mi nombre es:" + nombre + " tengo" + edad + " años y vivo en " + ciudad);
