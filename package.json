@@ -4,10 +4,10 @@
   "description": "Proyecto Supermercado",
   "main": "index.js",
   "scripts": {
-    "start": "node --watch index.js",
-    "cliente": "npm start --prefix cliente",
-    "vercel-build": "npm install --prefix cliente && npm run build --prefix cliente",
-    "dev": "concurrently \"npm run start\" \"npm run cliente\""
+    "start": "node  index.js",
+    "front": "npm start --prefix front",
+    "vercel-build": "npm install --prefix front && npm run build --prefix front",
+    "dev": "concurrently \"npm run start\" \"npm run front\""
   },
   "author": "Diana Rodriguez",
   "license": "ISC",

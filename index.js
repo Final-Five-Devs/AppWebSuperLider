@@ -37,7 +37,7 @@ app.get("/api/traeinventario", async(req,res) => {
    res.send(arrayInventario)
 })
 
-const root = require('path').join(__dirname, './cliente/build')
+const root = require('path').join(__dirname, './front/build')
 app.use(express.static(root));
 app.get("*", (req, res) => {
     res.sendFile('index.html', { root });
