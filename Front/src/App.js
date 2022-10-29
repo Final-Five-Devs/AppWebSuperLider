@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <BrowserRouter>
         <Header size={cart.length}></Header>
         <Ruteos cart={cart} setCart={setCart} handleChange={handleChange} handleClick={handleClick}></Ruteos>

@@ -1,6 +1,7 @@
 
 import Table from 'react-bootstrap/Table';
 import {Lista} from '../../Data';
+import { Link } from 'react-router-dom';
 
 
 export const TotalProductos = () =>{
@@ -8,6 +9,12 @@ export const TotalProductos = () =>{
 
     return(
         <>
+
+                  <div className='col-12 col-md-4'>
+                        <button >
+                      <Link className='nav-link' to="/admin/dasboard">Volver</Link>
+                      </button>
+                   </div>
             
             
                     <Table striped bordered hover>

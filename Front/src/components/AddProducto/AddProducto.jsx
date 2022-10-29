@@ -1,10 +1,19 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
+
 export const AddProducto=()=>{
 
     return(
         <div className='container text-align-left'>
         <div className='row'>
+    
+                    <div className='col-12 col-md-4'>
+                        <button >
+                      <Link className='nav-link' to="/admin/dasboard">Volver</Link>
+                      </button>
+                   </div>
+            
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Nombre producto</Form.Label>

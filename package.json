@@ -1,0 +1,25 @@
+{
+  "name": "supermark",
+  "version": "1.0.0",
+  "description": "Proyecto Supermercado",
+  "main": "index.js",
+  "scripts": {
+    "start": "node  index.js",
+    "Front": "npm start --prefix Front",
+    "vercel-build": "npm install --prefix Front && npm run build --prefix Front",
+    "dev": "concurrently \"npm run start\" \"npm run Front\" "
+  },
+  "author": "Diana Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
