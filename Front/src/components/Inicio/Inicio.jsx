@@ -3,7 +3,10 @@ import Card from 'react-bootstrap/Card';
 import {Lista} from '../../Data';
 import Cards from "./Card";
 import "../../Styles/amazon.css";
+
 export const Inicio = ({ handleClick }) => {
+
+
     return (
         <>
              
