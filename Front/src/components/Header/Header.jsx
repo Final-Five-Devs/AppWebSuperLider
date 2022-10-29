@@ -58,9 +58,11 @@ export const Header = ({size}) => {
                 <div className="cart">
                   
                       <li className="nav-item">
-                              <Link className='nav-link' to="/CarroCompras"><box-icon name='cart'></box-icon></Link>
+                              <Link className='nav-link' to="/CarroCompras"><box-icon name='cart'></box-icon>
+                              <span >{size}</span>
+                              </Link>
                       </li>
-                      <span >{size}</span>
+                      
                   
                 </div>
 

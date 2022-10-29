@@ -20,6 +20,12 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
     handlePrice();
   });
 
+  const vaciarCarrito = () => {
+    const arr = [];
+    setCart(arr);
+    handlePrice(arr);
+  };
+
   return (
     <article>
       {cart.map((item) => (
@@ -35,13 +41,16 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
           </div>
           <div>
             <span>{item.price}</span>
-            <button onClick={() => handleRemove(item.id)}>Remove</button>
+            {/*}button onClick={() => handleRemove(item.id)}>Remove</button>*/}
           </div>
+          <button onClick={() => handleRemove(item.id)}><box-icon name="trash"></box-icon></button>
         </div>
       ))}
       <div className="total">
         <span>Precio total Carrito</span>
         <span>COP $ - {price}</span>
+        <button type="button" class="btn btn-success">Pagar</button>
+        <button type="button" class="btn btn-primary" onClick={() => vaciarCarrito()}>Vaciar carrito</button>
       </div>
     </article>
   );
