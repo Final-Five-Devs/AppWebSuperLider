@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import {Header} from './components/Header/Header';
 import {Carrucel} from './components/Carrucel/Carrucel'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Ruteos } from './Ruteos';
 
 function App() {
@@ -22,14 +22,17 @@ function App() {
     if (arr[ind].amount === 0) arr[ind].amount = 1;
     setCart([...arr]);
   };
-
+  //
+  
   return (
     <div className="App">
       
-      <BrowserRouter>
+      <Router>
         <Header size={cart.length}></Header>
+
         <Ruteos cart={cart} setCart={setCart} handleChange={handleChange} handleClick={handleClick}></Ruteos>
-      </BrowserRouter>
+
+      </Router>
     </div>
   );
 }

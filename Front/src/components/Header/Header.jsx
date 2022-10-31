@@ -1,14 +1,14 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { logout } from "../../firebase";
+
 import "./Header.css"
 
-
-
-
 export const Header = ({size}) => {
+  const [user, loading, error] = useAuthState(auth);
   
-  
-
   return (
     <Fragment>
 
@@ -28,7 +28,6 @@ export const Header = ({size}) => {
             </div>
           </div>
           </div>
-
 
             {/*Home
             <li class="nav-item">
@@ -63,7 +62,6 @@ export const Header = ({size}) => {
                               </Link>
                       </li>
                       
-                  
                 </div>
 
                 <div className="col-12 col-md-3 mt-2 mt-md-0 text-center">
@@ -72,10 +70,16 @@ export const Header = ({size}) => {
                             id="dropDownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span>Mi cuenta</span></Link>
                         <div className='dropdown-menu' aria-labelledby='dropDownMenu'>
-                            <Link className="dropdown-item" to="/admin/dasboard">Adm. Productos</Link>
+                          {
+                            user ? <Link className="dropdown-item" to="/admin/dasboard">Adm. Productos</Link> : ''
+                          }
+                            
                             <Link className="dropdown-item" to="/">Pedidos</Link>
-                            <Link className="dropdown-item" to="/">Mi cuenta</Link>
-                            <Link className="dropdown-item" to="/">Cerrar Sesion</Link>
+                            <Link className="dropdown-item" to="/login">Mi cuenta</Link>
+                          {
+                            user ?  <Link className="dropdown-item" to="/" onClick={() => logout()}>Cerrar Sesion</Link> : ''
+                          }
+                          
                         </div>
                     </div>
                     </div>

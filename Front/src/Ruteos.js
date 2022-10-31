@@ -6,9 +6,13 @@ import { Inicio } from "./components/Inicio/Inicio"
 import CarroCompras from './components/CarroCompras/CarroCompras'
 import { TotalProductos } from "./components/TotalProductos/TotalProductos";
 import { Dashboard } from "./components/admin/Dashboard";
+import Login from './components/login/Login';
+import Register from './components/Register/Register';
+import Reset from './components/Reset/Reset';
+
+//import Dashboard from './components/Dashboard/Dashboard';
 
 export const Ruteos =({ cart, setCart, handleChange,handleClick }) =>{
-    
 
     return(
         
@@ -19,13 +23,14 @@ export const Ruteos =({ cart, setCart, handleChange,handleClick }) =>{
                 <Route path="/admin/dasboard/Total%20Productos" element={<TotalProductos></TotalProductos>}></Route>
                 
                 <Route path="/CarroCompras" element={<CarroCompras cart={cart} setCart={setCart} handleChange={handleChange}/>}></Route>
-
                 
-        </Routes>
-
-
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/register" element={<Register/>} />
+                <Route exact path="/reset" element={ <Reset/>} />
+                <Route exact path="/dashboard" element={<Dashboard/>} />     
+               
+         </Routes>
 
     )
-
 
 }
