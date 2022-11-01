@@ -4,6 +4,7 @@ import {Lista} from '../../Data';
 import { Link } from 'react-router-dom';
 
 
+
 export const TotalProductos = () =>{
 
 
@@ -31,12 +32,12 @@ export const TotalProductos = () =>{
                     {Lista.map((value,key)=>{
                      return <tr>
                         
-                                              <td >{value.id}</td>
-                        <td>{value.title}</td>
-                        <td>{value.author}</td>
-                        <td>$ {value.price}</td>
+                        <td >{value.id}</td>
+                        <td>{value.nombre}</td>
+                        <td>{value.descripcion}</td>
+                        <td>$ {value.precio}</td>
                         <td>
-                              <img src={value.img} width="60" HEIGHT="60" alt="" />
+                              <img src={value.imagen} width="60" HEIGHT="60" alt="" />
                             
                         </td>
                         
@@ -48,13 +49,7 @@ export const TotalProductos = () =>{
                     }
                     </tbody>
                   </Table>
-
-                
-
-
-            
-        
-        
+             
         </>
 
 

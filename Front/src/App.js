@@ -17,12 +17,17 @@ function App() {
   const handleChange = (item, d) => {
     const ind = cart.indexOf(item);
     const arr = cart;
-    arr[ind].amount += d;
+    arr[ind].inventario += d;
 
-    if (arr[ind].amount === 0) arr[ind].amount = 1;
+    if (arr[ind].inventario === 0) arr[ind].inventario = 1;
     setCart([...arr]);
   };
   //
+
+
+  
+
+  
   
   return (
     <div className="App">
