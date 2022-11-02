@@ -24,7 +24,7 @@ export const Header = ({size}) => {
           <div className='navbar row'>
             <div className='col-12 col-md-2'>
             <div className='navbar-brand'>
-          <Link to="/" ><img src="./imagen" alt="SuperMarket"></img></Link>
+          <Link to="/" ><img src="../public/Logo_Super.gif" alt="SuperMarket"></img></Link>          
             </div>
           </div>
           </div>

@@ -48,11 +48,6 @@ export const TotalProductos = () =>{
                     }
                     </tbody>
                   </Table>
-<<<<<<< HEAD
-
-=======
-             
->>>>>>> 01a4a0fcb503cac81b826400c7e6f9c76bac2d5e
         </>
 
 

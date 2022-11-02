@@ -5,15 +5,7 @@ import { Inicio } from "./components/Inicio/Inicio"
 import CarroCompras from './components/CarroCompras/CarroCompras'
 import { TotalProductos } from "./components/TotalProductos/TotalProductos";
 import { Dashboard } from "./components/admin/Dashboard";
-<<<<<<< HEAD
 import { VentasRealizadas } from "./components/VentasRealizadas/VentasRealizadas";
-=======
-import Login from './components/login/Login';
-import Register from './components/Register/Register';
-import Reset from './components/Reset/Reset';
-
-//import Dashboard from './components/Dashboard/Dashboard';
->>>>>>> 01a4a0fcb503cac81b826400c7e6f9c76bac2d5e
 
 export const Ruteos =({ cart, setCart, handleChange,handleClick }) =>{
 
