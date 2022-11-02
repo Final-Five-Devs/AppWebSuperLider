@@ -29,7 +29,7 @@ export const Sidebar=()=>{
         
                     </li>
                     <li class="nav-item">
-                      <Link className='nav-link' to="/admin/dasboard/nuevo">Ventas Realizadas</Link>
+                      <Link className='nav-link' to="/admin/dasboard/VentasRealizadas">Ventas Realizadas</Link>
         
                     </li>
 

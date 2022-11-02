@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 export const TotalProductos = () =>{
 
-
     return(
         <>
 
@@ -49,12 +48,6 @@ export const TotalProductos = () =>{
                     </tbody>
                   </Table>
 
-                
-
-
-            
-        
-        
         </>
 
 
