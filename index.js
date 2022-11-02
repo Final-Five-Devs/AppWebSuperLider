@@ -9,9 +9,15 @@ const mongoose = require('mongoose');
 
 
 console.log(process.env.MONGO_URI)
+
+// Se crea función para llamar la base de datos en el Front
+const connectDatabase =()=>{
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Base de datos supermarket conectada")  )
     .catch( e => console.log(e))
+}
+
+connectDatabase();
 
 const inventario = require('./models/inventario')    
 
