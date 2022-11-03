@@ -14,3 +14,14 @@
     position: relative;
     top: -15px;
   }
+  
+
+  .input-group{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 200px;
+   
+
+  }

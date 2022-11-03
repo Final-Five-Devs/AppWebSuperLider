@@ -6,6 +6,10 @@ import CarroCompras from './components/CarroCompras/CarroCompras'
 import { TotalProductos } from "./components/TotalProductos/TotalProductos";
 import { Dashboard } from "./components/admin/Dashboard";
 import { VentasRealizadas } from "./components/VentasRealizadas/VentasRealizadas";
+import Login from "./components/login/Login";
+import Register from "./components/Register/Register";
+import Reset from "./components/Reset/Reset";
+
 
 export const Ruteos =({ cart, setCart, handleChange,handleClick }) =>{
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { logout } from "../../firebase";
+import '../Header/Header.css'
+
 
 import "./Header.css"
 
@@ -24,7 +26,7 @@ export const Header = ({size}) => {
           <div className='navbar row'>
             <div className='col-12 col-md-2'>
             <div className='navbar-brand'>
-          <Link to="/" ><img src="../public/Logo_Super.gif" alt="SuperMarket"></img></Link>          
+          <Link to="/" ><img src="./Logo_Super_PNG.png" alt="SuperMarket" width={200} height={200}></img></Link>          
             </div>
           </div>
           </div>
@@ -34,7 +36,7 @@ export const Header = ({size}) => {
               <Link className='nav-link active' to="/">Home</Link>
             </li>  */}
 
-          <div className='col-12 col-md-10'>
+          <div className='col-12 col-md-15'>
                     <div className="input-group">
                         <input
                             type="text"
