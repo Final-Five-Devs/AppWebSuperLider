@@ -1,11 +1,28 @@
-
+import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import {Lista} from '../../Data';
+// import {Lista} from '../../Data';
 import { Link } from 'react-router-dom';
 
-
-
 export const TotalProductos = () =>{
+
+  const [Lista, setLista] = useState([])
+
+  useEffect(()=>{
+
+    fetch('/api/productos')
+    .then((response) => response.json())
+   .then((data) => {
+   // console.log('EStamos en total productos:')
+    //console.log(data)
+    console.log('hola desde Total productos')
+    let { productos } = data
+    //console.log(productos)
+    setLista([...productos]) 
+   // console.log(Lista)
+  },[]);
+
+  })
+console.log(Lista)
 
     return(
         <>
@@ -15,7 +32,6 @@ export const TotalProductos = () =>{
                       <Link className='nav-link' to="/admin/dasboard">Volver</Link>
                       </button>
                    </div>
-            
             
                     <Table striped bordered hover>
                     <thead>
@@ -42,7 +58,6 @@ export const TotalProductos = () =>{
                         
                         <td><button variant="primary" type="submit">Eliminar</button></td>
                                         
-                      
                       </tr>
                       })
                     }
@@ -50,10 +65,6 @@ export const TotalProductos = () =>{
                   </Table>
         </>
 
-
     )
 
 }
-
-
-

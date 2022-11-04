@@ -1,16 +1,25 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { logout } from "../../firebase";
-import '../Header/Header.css'
 
+import '../Header/Header.css'
 
 import "./Header.css"
 
 export const Header = ({size}) => {
   const [user, loading, error] = useAuthState(auth);
-  
+
+  const testConectBack = ( ) => {
+    fetch('/api/productos')
+    .then((response) => response.json())
+   .then((data) => {
+    console.log('LOS DATOS TRAIDOS DEL BACK SON:')
+    console.log(data)});
+
+}
+
   return (
     <Fragment>
 
