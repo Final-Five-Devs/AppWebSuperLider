@@ -34,7 +34,7 @@ export const Inicio = ({handleClick}) => {
              
              <section>
                 {Lista.map((item) => (
-                    <Cards key={item.id} item={item} handleClick={handleClick} />
+                    <Cards key={item._id} item={item} handleClick={handleClick} />
                 ))}
 
             </section>

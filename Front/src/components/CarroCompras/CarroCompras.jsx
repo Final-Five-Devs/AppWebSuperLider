@@ -3,16 +3,16 @@ import "../../Styles/cart.css";
 
 const CarroCompras = ({ cart, setCart, handleChange }) => {
   const [precio, setPrice] = useState(0);
-
+ 
   const handleRemove = (id) => {
-    const arr = cart.filter((item) => item.id !== id);
+    const arr = cart.filter((item) => item._id !== id);
     setCart(arr);
     handlePrice();
   };
 
   const handlePrice = () => {
     let ans = 0;
-    cart.map((item) => (ans += item.inventario * item.precio));
+    cart.map((item) => (ans += item.inventarioResta * item.precio));
     setPrice(ans);
   };
 
@@ -26,24 +26,25 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
     handlePrice(arr);
   };
 
+
   return (
     <article>
       {cart.map((item) => (
-        <div className="cart_box" key={item.id}>
+        <div className="cart_box" key={item._id}>
           <div className="cart_img">
             <img src={item.imagen} alt="" />
             <p>{item.nombre}</p>
           </div>
           <div>
             <button onClick={() => handleChange(item, 1)}>+</button>
-            <button>{item.inventario}</button>
+            <button>{item.inventarioResta} </button>
             <button onClick={() => handleChange(item, -1)}>-</button>
           </div>
           <div>
             <span>{item.precio}</span>
             {/*}button onClick={() => handleRemove(item.id)}>Remove</button>*/}
           </div>
-          <button onClick={() => handleRemove(item.id)}><box-icon name="trash"></box-icon></button>
+          <button onClick={() => handleRemove(item._id)}><box-icon name="trash"></box-icon></button>
         </div>
       ))}
       <div className="total">

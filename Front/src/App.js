@@ -17,9 +17,9 @@ function App() {
   const handleChange = (item, d) => {
     const ind = cart.indexOf(item);
     const arr = cart;
-    arr[ind].inventario += d;
+    arr[ind].inventarioResta += d;
 
-    if (arr[ind].inventario === 0) arr[ind].inventario = 1;
+    if (arr[ind].inventarioResta === 0) arr[ind].inventarioResta = 1;
     setCart([...arr]);
   };
   //

@@ -11,13 +11,12 @@ export const TotalProductos = () =>{
       fetch('/api/productos')
           .then((response) => response.json())
           .then((data) => {
-              // console.log('EStamos en total productos:')
-              //console.log(data)
-              console.log('hola desde Total productos')
+              
               let { productos } = data
-              //console.log(productos)
+              
+              
               setLista([...productos])
-              // console.log(Lista)
+              
           }, []);
 
                   }
@@ -29,12 +28,13 @@ console.log(Lista)
         <>
 
                   <div className='col-12 col-md-4'>
-                        <button >
+                        <button type="button" class="btn btn-outline-secondary">
                       <Link className='nav-link' to="/admin/dasboard">Volver</Link>
                       </button>
                    </div>
-            
+                    <h1>Lista de Productos</h1>
                     <Table striped bordered hover>
+                    
                     <thead>
                       <tr>
                         <th>Item</th>
@@ -59,7 +59,7 @@ console.log(Lista)
                             
                         </td>
                         
-                        <td><button variant="primary" type="submit">Eliminar</button></td>
+                        <td><button type="button" class="btn btn-primary">Eliminar</button></td>
                                         
                       </tr>
                       })

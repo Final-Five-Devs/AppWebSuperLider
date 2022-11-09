@@ -9,7 +9,7 @@ export const AddProducto=()=>{
         <div className='row'>
     
                     <div className='col-12 col-md-4'>
-                        <button >
+                        <button type="button" class="btn btn-outline-secondary" >
                       <Link className='nav-link' to="/admin/dasboard">Volver</Link>
                       </button>
                    </div>

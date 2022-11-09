@@ -9,16 +9,8 @@ import '../Header/Header.css'
 import "./Header.css"
 
 export const Header = ({size}) => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
-  const testConectBack = ( ) => {
-    fetch('/api/productos')
-    .then((response) => response.json())
-   .then((data) => {
-    console.log('LOS DATOS TRAIDOS DEL BACK SON:')
-    console.log(data)});
-
-}
 
   return (
     <Fragment>

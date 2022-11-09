@@ -8,7 +8,8 @@ const inventarioSchema = new Schema({
   precio: Number,
   descripcion:String,
   imagen: String,
-  inventario: Number
+  inventario: Number,
+  inventarioResta:Number
 
 });
 

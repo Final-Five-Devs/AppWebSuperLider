@@ -3,35 +3,47 @@ import Table from 'react-bootstrap/Table';
 import {Link} from 'react-router-dom';
 
 export const VentasRealizadas = () => {
+   
     const [Lista, setLista] = useState([])
 
     useEffect(()=>{
+      if (Lista=="") { 
         fetch('/api/ventas')
-        .then((response) => response.json())
-       .then((Lista) => {
-        console.log('Desde Ventas')
-        console.log(Lista)})
-        .catch(err => console.log('Solicitud fallida',err));
+            .then((respuesta) => respuesta.json())
+            .then((datos) => {
+               
+                Object.values(datos).forEach(val =>
+                    {
+                        if(Array.isArray(val)){ 
+                            setLista(val);
+                        
+                        }
 
-      
-                      }
-                  
-    )
-    
-
+                    }
+                    );
+                //--------------------
+            }, []);
+  
+                    }
+                }
+  )
+  //console.log(Lista)
+                      
     return (
         <>
+        <h1>Ventas Realizadas</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Cod.venta</th>
                         <th>Descripción</th>
-                        <th>Monto total venta</th>
+                        <th>Monto Total Venta</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {Lista.map((value) => {
+                      
                         return <tr>
 
                             <td>{value.CodVenta}</td>
@@ -45,7 +57,7 @@ export const VentasRealizadas = () => {
             </Table>
 
             <div className='col-12 col-md-4' >
-                <button>
+                <button type="button" class="btn btn-outline-secondary">
                     <Link className='nav-link'
                         to="/admin/dasboard"> Volver </Link>
                 </button>

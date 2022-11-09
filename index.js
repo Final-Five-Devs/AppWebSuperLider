@@ -45,20 +45,6 @@ app.use(cors());
 
   app.disable('view cache');  
 
-/*app.get("/api/test", (req, res) => {
-  res.send("test");
-});
-
-app.get("/api/todoventa", (req ,res) =>{
-    res.send(listTotal)
-})
-
-app.get("/api/traeinventario", async(req,res) => {
-   const arrayInventario = await inventario.find()
-   console.log(arrayInventario)
-   res.send(arrayInventario)
-})*/
-
 
 const root = require('path').join(__dirname, './Front/build')
 

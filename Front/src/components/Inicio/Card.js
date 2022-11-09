@@ -1,7 +1,7 @@
 import React from "react";
 
 const Cards = ({ item, handleClick }) => {
-  const { nombre, precio, descripcion, imagen } = item;
+  const { nombre, precio, imagen } = item;
   return (
     <div className="cards">
       <div className="image_box">
