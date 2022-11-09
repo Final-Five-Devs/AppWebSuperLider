@@ -34,8 +34,9 @@ app.use(logger("dev"));
 
 app.use(express.json());   
 const productos=require("./routes/products")
-
+const ventastotales=require("./routes/sales")
 app.use('/api',productos)
+app.use('/api',ventastotales)
 module.exports=app
 
 
@@ -44,7 +45,7 @@ app.use(cors());
 
   app.disable('view cache');  
 
-app.get("/api/test", (req, res) => {
+/*app.get("/api/test", (req, res) => {
   res.send("test");
 });
 
@@ -56,7 +57,7 @@ app.get("/api/traeinventario", async(req,res) => {
    const arrayInventario = await inventario.find()
    console.log(arrayInventario)
    res.send(arrayInventario)
-})
+})*/
 
 
 const root = require('path').join(__dirname, './Front/build')

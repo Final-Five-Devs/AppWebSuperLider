@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-// import {Lista} from '../../Data';
 import { Link } from 'react-router-dom';
 
 export const TotalProductos = () =>{
@@ -8,20 +7,22 @@ export const TotalProductos = () =>{
   const [Lista, setLista] = useState([])
 
   useEffect(()=>{
+    if (Lista=="") { 
+      fetch('/api/productos')
+          .then((response) => response.json())
+          .then((data) => {
+              // console.log('EStamos en total productos:')
+              //console.log(data)
+              console.log('hola desde Total productos')
+              let { productos } = data
+              //console.log(productos)
+              setLista([...productos])
+              // console.log(Lista)
+          }, []);
 
-    fetch('/api/productos')
-    .then((response) => response.json())
-   .then((data) => {
-   // console.log('EStamos en total productos:')
-    //console.log(data)
-    console.log('hola desde Total productos')
-    let { productos } = data
-    //console.log(productos)
-    setLista([...productos]) 
-   // console.log(Lista)
-  },[]);
-
-  })
+                  }
+              }
+)
 console.log(Lista)
 
     return(
@@ -39,17 +40,19 @@ console.log(Lista)
                         <th>Item</th>
                         <th>Producto</th>
                         <th>Descripción</th>
+                        <th>Unidades Disponibles</th>
                         <th>Precio</th>
                         <th>Imagen</th>
                       </tr>
                     </thead>
                     <tbody>
-                    {Lista.map((value,key)=>{
+                    {Lista.map((value,index)=>{
                      return <tr>
                         
-                        <td >{value.id}</td>
+                        <td >{index+1}</td>
                         <td>{value.nombre}</td>
                         <td>{value.descripcion}</td>
+                        <td>{value.inventario}</td>
                         <td>$ {value.precio}</td>
                         <td>
                               <img src={value.imagen} width="60" HEIGHT="60" alt="" />
