@@ -27,7 +27,7 @@ export const TotalProductos = () => {
 
   function borrarPorId (id){
     // DELETE request using fetch inside useEffect React hook
-    fetch('api/producto/'+id, { method: 'DELETE' })
+    fetch('/api/producto/'+id, { method: 'DELETE' })
      
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)

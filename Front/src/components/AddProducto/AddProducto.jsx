@@ -1,48 +1,113 @@
+import { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+
 import { Link } from 'react-router-dom';
 
-export const AddProducto=()=>{
+export class AddProducto extends Component{
+    state = {
+        nombreProducto:"",
+        precioProducto:"",
+        descripcionProducto:"",
+        imagenProducto:"",
+        inventarioProducto:"",
+        inventarioRestaProducto:1
+        
+    }
 
-    return(
-        <div className='container text-align-left'>
-        <div className='row'>
+    crearProducto()
+    {
+                    var serverObject = {
+                        nombre : this.state.nombreProducto,
+                        precio: this.state.precioProducto,
+                        descripcion : this.state.descripcionProducto,
+                        imagen : this.state.imagenProducto,
+                        inventario: this.state.inventarioProducto,
+                        inventarioResta: this.state.inventarioRestaProducto
+                    }
+                    
+                   
+                    fetch('/api/producto/nuevo', {
+                            method: "POST",
+                            body: JSON.stringify(serverObject),
+                            headers: {"Content-type": "application/json; charset=UTF-8"}
+                            })
+                            .then(response => response.json()) 
+                            .then(json => console.log(json))
+                            .catch(err => console.log(err));
+    }
+    render(){
     
-                    <div className='col-12 col-md-4'>
-                        <button type="button" class="btn btn-outline-secondary" >
-                      <Link className='nav-link' to="/admin/dasboard">Volver</Link>
-                      </button>
-                   </div>
-            
-            <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Nombre producto</Form.Label>
-                    <Form.Control type="email" placeholder="Nombre del producto" />
-                </Form.Group>
+        return(
+            <div className='container text-align-left'>
+            <div className='row'>
+        
+                        <div className='col-12 col-md-4'>
+                            <button type="button" class="btn btn-outline-secondary" >
+                          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
+                          </button>
+                       </div>
+                
+                <Form>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Nombre producto</Form.Label>
+                        <input 
+                                    type="text" 
+                                    className="form-control"
+                                    onChange={e => this.setState({ nombreProducto: e.target.value})}
+                                    placeholder="Ingrese aca el nombre del producto" />
+    
+                    </Form.Group>
+    
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Descripción</Form.Label>
+                        
+                        <input 
+                                    type="text" 
+                                    className="form-control"
+                                    onChange={e => this.setState({ descripcionProducto: e.target.value})}
+                                    placeholder="Ingrese aca la descripción del Producto" />
+                    </Form.Group>
+    
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Valor</Form.Label>
+                        
+                        <input 
+                                    type="text" 
+                                    className="form-control"
+                                    onChange={e => this.setState({ precioProducto: e.target.value})}
+                                    placeholder="Ingrese aca el precio Producto" />
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Descripción</Form.Label>
-                    <Form.Control type="email" placeholder="Descripción del producto" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Valor</Form.Label>
-                    <Form.Control type="email" placeholder="Valor del producto" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Imagen</Form.Label>
-                    <Form.Control type="email" placeholder="URL Imagen del producto" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Inventario</Form.Label>
+                        
+                        <input 
+                                    type="text" 
+                                    className="form-control"
+                                    onChange={e => this.setState({ inventarioProducto: e.target.value})}
+                                    placeholder="Ingrese aca el inventario Producto" />
+                    </Form.Group>
+    
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Imagen</Form.Label>
+                        
+                        <input 
+                                    type="text" 
+                                    className="form-control"
+                                    onChange={e => this.setState({ imagenProducto: e.target.value})}
+                                    placeholder="Ingrese aca la imagen del Producto" />
+                    </Form.Group>
+                    <Button onClick={() => {
+                                    this.crearProducto()
+                                }} variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         </div>
-    </div>
-
-
-    )
-
-
+    
+    
+        )
+    }
 }
