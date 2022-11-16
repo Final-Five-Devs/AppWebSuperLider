@@ -1,15 +1,28 @@
+
 const mongoose = require('mongoose');
-const Schema  = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const ventasSchema = new Schema({
 
-  CodVenta: Number,
-  descripcion:String,
-  TotalVenta: Number
-  
-});
 
-const Ventas = mongoose.model('ventas',ventasSchema)
+  articulos: {
+    type: Array,
+    required: true
+  },
+  total: {
+    type: Number,
+    required: true,
+    trim: true
+  },
+  
+},
+  {
+    timestamps: true,
+  }  
+  
+);
+
+const Ventas = mongoose.model('ventas', ventasSchema)
 
 module.exports = Ventas
 

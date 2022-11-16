@@ -3,7 +3,10 @@ import "../../Styles/cart.css";
 
 const CarroCompras = ({ cart, setCart, handleChange }) => {
   const [precio, setPrice] = useState(0);
- 
+
+
+
+
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item._id !== id);
     setCart(arr);
@@ -16,9 +19,7 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
     setPrice(ans);
   };
 
-  useEffect(() => {
-    handlePrice();
-  });
+ 
 
   const vaciarCarrito = () => {
     const arr = [];
@@ -26,6 +27,53 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
     handlePrice(arr);
   };
 
+  useEffect(() => {
+    handlePrice();
+    
+  });
+  const ActualizarInventario = () => {
+
+    cart.forEach(element => {
+      const data = { inventario: element.inventario-element.inventarioResta };
+    
+                   fetch('/api/producto/'+element._id, {
+                              method: "PUT",
+                              body: JSON.stringify(data),
+                              headers: {"Content-type": "application/json; charset=UTF-8"}
+                              })
+                              .then(response => response.json()) 
+                              .then(json => console.log(json))
+                              .catch(err => console.log(err));
+     
+    
+            
+            
+               
+
+
+
+      
+    });
+    console.log(cart);
+    const compra={ articulos: cart,
+                  total:precio            
+    };
+            fetch('/api/ventas/nuevo', {
+                                method: "POST",
+                                body: JSON.stringify(compra),
+                                headers: {"Content-type": "application/json; charset=UTF-8"}
+                                })
+                                .then(response => response.json()) 
+                                .then(json => console.log(json))
+                                .catch(err => console.log(err));
+
+                                console.log(compra);
+                                window.alert("Compra Realizada con Exito");
+                                vaciarCarrito()
+                
+
+
+  }
 
   return (
     <article>
@@ -50,7 +98,7 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
       <div className="total">
         <span>Precio total Carrito</span>
         <span>COP $ - {precio}</span>
-        <button type="button" class="btn btn-success">Pagar</button>
+        <button type="button" class="btn btn-success" onClick={()=>ActualizarInventario()}>Pagar</button>
         <button type="button" class="btn btn-primary" onClick={() => vaciarCarrito()}>Vaciar carrito</button>
       </div>
     </article>

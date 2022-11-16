@@ -6,6 +6,8 @@ export const VentasRealizadas = () => {
    
     const [Lista, setLista] = useState([])
 
+
+    
     useEffect(()=>{
       if (Lista=="") { 
         fetch('/api/ventas')
@@ -19,14 +21,39 @@ export const VentasRealizadas = () => {
                         
                         }
 
+
                     }
                     );
                 //--------------------
             }, []);
   
                     }
+                    console.log(Lista);
                 }
+                
   )
+
+  const reccorerArray=()=> {
+        Lista.forEach((element,index) => {
+
+            
+
+                console.log("el valor del elemento es: "+JSON.stringify(element)+" el indice del elemento es: ");
+
+            
+                
+                
+               
+
+           
+            
+        });    
+    
+    
+
+  }
+
+  reccorerArray();
   //console.log(Lista)
                       
     return (
@@ -42,13 +69,16 @@ export const VentasRealizadas = () => {
                 </thead>
 
                 <tbody>
-                    {Lista.map((value) => {
-                      
+                    {
+                        
+                       
+                    Lista.map((value) => {
+                                   console.log(Lista)     
                         return <tr>
 
-                            <td>{value.CodVenta}</td>
-                            <td>{value.descripcion}</td>
-                            <td>$ {value.TotalVenta}</td>
+                            <td>{"Toca sacar los datos"}</td>
+                            <td>{1}</td>
+                            <td>$ {value.total}</td>
 
                         </tr>
                     })

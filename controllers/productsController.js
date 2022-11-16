@@ -51,7 +51,7 @@ exports.updateProduct=async(req,res) =>{
 
     res.status(200).json({
         success:true,
-        message:"producto actualizado correctamente",
+        message:"Producto actualizado correctamente",
         product
     })
 
