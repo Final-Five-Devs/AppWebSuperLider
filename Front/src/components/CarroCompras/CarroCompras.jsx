@@ -98,8 +98,8 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
       <div className="total">
         <span>Precio total Carrito</span>
         <span>COP $ - {precio}</span>
-        <button type="button" class="btn btn-success" onClick={()=>ActualizarInventario()}>Pagar</button>
-        <button type="button" class="btn btn-primary" onClick={() => vaciarCarrito()}>Vaciar carrito</button>
+        <button type="button" className="btn btn-success" onClick={()=>ActualizarInventario()}>Pagar</button>
+        <button type="button" className="btn btn-primary" onClick={() => vaciarCarrito()}>Vaciar carrito</button>
       </div>
     </article>
   );

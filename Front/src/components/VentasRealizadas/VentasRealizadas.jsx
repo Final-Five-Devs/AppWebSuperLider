@@ -36,22 +36,14 @@ export const VentasRealizadas = () => {
   const reccorerArray=()=> {
         Lista.forEach((element,index) => {
 
-            
+                //console.log("el valor del elemento es: "+JSON.stringify(element)+" el indice del elemento es: ");
 
-                console.log("el valor del elemento es: "+JSON.stringify(element)+" el indice del elemento es: ");
-
-            
-                
-                
-               
-
-           
-            
         });    
     
     
 
   }
+
 
   reccorerArray();
   //console.log(Lista)
@@ -62,23 +54,35 @@ export const VentasRealizadas = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Cod.venta</th>
-                        <th>Descripción</th>
-                        <th>Monto Total Venta</th>
+                        <th>Código venta</th>
+                        <th>Descripción venta</th>
+                        <th>Monto total venta</th>
+                        <th>Fecha venta</th>
+                        
                     </tr>
                 </thead>
 
                 <tbody>
+                    
+
                     {
                         
                        
                     Lista.map((value) => {
-                                   console.log(Lista)     
-                        return <tr>
+                                   console.log(Lista)
+                                   let Date = value.createdAt;
+                                   let DateCut = Date.slice(0, 10);
 
-                            <td>{"Toca sacar los datos"}</td>
-                            <td>{1}</td>
-                            <td>$ {value.total}</td>
+                                   
+
+                        return <tr>
+                            
+                            <td>{value._id}</td>
+                            <td>{value.articulos[0].nombre}</td>
+                            <td>${value.total}</td>
+                            <td>{DateCut}</td>
+
+                            {/* <td>$ {value.total}</td> */}
 
                         </tr>
                     })
