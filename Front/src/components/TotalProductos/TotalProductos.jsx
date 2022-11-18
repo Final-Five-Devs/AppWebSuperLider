@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
+import { UpdProducto } from '../UpdProducto/UpdProducto';
 
 export const TotalProductos = () => {
 
   const [Lista, setLista] = useState([])
+  const [ListaActualizar, setListaActualizar] = useState([])
 
   useEffect(() => {
     if (Lista == "") {
@@ -38,7 +40,17 @@ export const TotalProductos = () => {
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }
 
+const actualizarPorId  = (id) => {
+  
+   const arreglo=Lista.filter((item) => item._id === id);
+    setListaActualizar(arreglo);
+    console.log(arreglo);
+    
+  
+    
+  };
 
+ 
 
 
 
@@ -65,6 +77,7 @@ export const TotalProductos = () => {
         </thead>
         <tbody>
           {Lista.map((value, index) => {
+            
             return <tr>
 
               <td >{index + 1}</td>
@@ -78,7 +91,7 @@ export const TotalProductos = () => {
               </td>
 
               <td><button type="button" class="btn btn-primary" onClick={()=>borrarPorId(value._id)}>Eliminar</button></td>
-
+              <td><button type="button" class="btn btn-secondary" onClick={()=>actualizarPorId(value._id)}> <Link className='nav-link ' to="/admin/dasboard/actualizar">Actualizar</Link></button></td>
             </tr>
           })
           }
