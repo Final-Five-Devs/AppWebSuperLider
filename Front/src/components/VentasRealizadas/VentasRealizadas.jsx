@@ -28,7 +28,7 @@ export const VentasRealizadas = () => {
             }, []);
   
                     }
-                    console.log(Lista);
+                    //console.log(Lista);
                 }
                 
   )
@@ -63,26 +63,41 @@ export const VentasRealizadas = () => {
                 </thead>
 
                 <tbody>
-                    
-
+                
                     {
                         
                        
                     Lista.map((value) => {
-                                   console.log(Lista)
+                                   //console.log(Lista)
+
                                    let Date = value.createdAt;
                                    let DateCut = Date.slice(0, 10);
 
-                                   
+                                   {/* for (var i = 0; i < Lista.length; i++) {
+                                       console.log(value.articulos[i].nombre)
+                                   } */}
+
+                                    const arrayArticulos = value.articulos;
+
+                                    var descripcion = [];
+                                    
+
+                                    for (var i = 0; i < arrayArticulos.length; i++) {
+                                        console.log(arrayArticulos[i].nombre)
+                                        descripcion.push(arrayArticulos[i].nombre + " ");
+                                        
+                                    }
+                                    
+                                    console.log(arrayArticulos);
+                                    console.log(descripcion);
+
 
                         return <tr>
                             
                             <td>{value._id}</td>
-                            <td>{value.articulos[0].nombre}</td>
+                            <td>{descripcion}</td>
                             <td>${value.total}</td>
                             <td>{DateCut}</td>
-
-                            {/* <td>$ {value.total}</td> */}
 
                         </tr>
                     })
