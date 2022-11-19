@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Swal from 'sweetalert2'
+
 
 import { Link } from 'react-router-dom';
 
@@ -15,6 +17,9 @@ export class AddProducto extends Component{
         
     }
 
+
+
+
     crearProducto()
     {
                     var serverObject = {
@@ -24,24 +29,53 @@ export class AddProducto extends Component{
                         imagen : this.state.imagenProducto,
                         inventario: this.state.inventarioProducto,
                         inventarioResta: this.state.inventarioRestaProducto
+
+
+
                     }
+            
+
+            fetch('/api/producto/nuevo', {
+
+
+                    method: "POST",
+                    body: JSON.stringify(serverObject),
+                    headers: {"Content-type": "application/json; charset=UTF-8"}
+                    })
+
+
+
+                    .then(response => response.json()) 
+                    .then(json => console.log(json))
+
+                  
+                    Swal.fire({
+                        title: 'Producto creado con exito',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
                     
-                   
-                    fetch('/api/producto/nuevo', {
-                            method: "POST",
-                            body: JSON.stringify(serverObject),
-                            headers: {"Content-type": "application/json; charset=UTF-8"}
-                            })
-                            .then(response => response.json()) 
-                            .then(json => console.log(json))
-                            .catch(err => console.log(err));
-    }
+                
+   
+                
+
+                 .catch(err => console.log(err));
+      
+           
+        }
+
     render(){
-    
+
+  
         return(
             <div className='container text-align-left'>
             <div className='row'>
         
+                <h1>Formulario-Crear Producto</h1>
                         <div className='col-12 col-md-4'>
                             <button type="button" class="btn btn-outline-secondary" >
                           <Link className='nav-link' to="/admin/dasboard">Volver</Link>

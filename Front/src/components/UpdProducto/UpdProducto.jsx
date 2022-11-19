@@ -7,12 +7,6 @@ import { Link } from 'react-router-dom';
 
 export class UpdProducto extends Component{
 
-
-    
-    
-    
-    
-   
     state = {
         nombreProducto:"",
         precioProducto:"",
@@ -53,6 +47,7 @@ export class UpdProducto extends Component{
 
             <div className='container text-align-left'>
             <div className='row'>
+            <h1>Formulario-Actualizar Producto</h1>
         
                         <div className='col-12 col-md-4'>
                             <button type="button" class="btn btn-outline-secondary" >

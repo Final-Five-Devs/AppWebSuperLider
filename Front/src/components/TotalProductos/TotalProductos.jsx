@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
-import { UpdProducto } from '../UpdProducto/UpdProducto';
+import Swal from 'sweetalert2';
 
 export const TotalProductos = () => {
 
@@ -28,29 +28,51 @@ export const TotalProductos = () => {
  
 
   const borrarPorId  = (id) => {
+    const response= 
+
+    Swal.fire({
+      title: '¿Está seguro que desea eliminar el producto?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, eliminar!'
+    }).then((response) => {
+      if (response.isConfirmed) {
+
     // DELETE request using fetch inside useEffect React hook
-    fetch('/api/producto/'+id, { method: 'DELETE' }).then(response => response.json()) 
-    .then(json => {if(json.success===true){
-      window.alert("Producto Eliminado con Exito");
+    fetch('/api/producto/'+id, { method: 'DELETE' })
+    .then(response => response.json()) 
+    .then(json => {if(json.success==true){
+      Swal.fire(
+        'Eliminado!',
+        'Su producto ha sido eliminado.',
+        'Hecho')
       setLista([]);
       console.log(json);
      }})
     .catch(err => console.log(err));
+
+
+        
+      }
+    })
+
+
+
      
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }
 
 const actualizarPorId  = (id) => {
   
-   const arreglo=Lista.filter((item) => item._id === id);
-    setListaActualizar(arreglo);
-    console.log(arreglo);
-    
-  
-    
-  };
-
+  const arreglo=Lista.filter((item) => item._id === id);
+   setListaActualizar(arreglo);
+   console.log(arreglo);
+   
  
+   
+ };
 
 
 
@@ -77,7 +99,6 @@ const actualizarPorId  = (id) => {
         </thead>
         <tbody>
           {Lista.map((value, index) => {
-            
             return <tr>
 
               <td >{index + 1}</td>
