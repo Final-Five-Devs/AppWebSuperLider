@@ -1,7 +1,9 @@
 import React from "react";
 
 const Cards = ({ item, handleClick }) => {
-  const { nombre, precio, imagen , inventario} = item;
+
+
+  const { nombre, precio, imagen , invnetario} = item;
   return (
     <div className="cards">
       <div className="image_box">
