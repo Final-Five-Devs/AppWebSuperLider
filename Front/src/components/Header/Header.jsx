@@ -77,7 +77,7 @@ export const Header = ({size}) => {
                             user ? <Link className="dropdown-item" to="/admin/dasboard">Adm. Productos</Link> : ''
                           }
                             
-                            <Link className="dropdown-item" to="/">Pedidos</Link>
+                            
                             <Link className="dropdown-item" to="/login">Mi cuenta</Link>
                           {
                             user ?  <Link className="dropdown-item" to="/" onClick={() => logout()}>Cerrar Sesion</Link> : ''

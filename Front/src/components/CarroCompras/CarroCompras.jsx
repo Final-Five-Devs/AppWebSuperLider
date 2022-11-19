@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../Styles/cart.css";
+import Swal from 'sweetalert2'
 
 const CarroCompras = ({ cart, setCart, handleChange }) => {
   const [precio, setPrice] = useState(0);
@@ -68,7 +69,13 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
                                 .catch(err => console.log(err));
 
                                 console.log(compra);
-                                window.alert("Compra Realizada con Exito");
+                                Swal.fire({
+                                  position: 'top-center',
+                                  icon: 'success',
+                                  title: 'Compra realizada con exito',
+                                  showConfirmButton: false,
+                                  timer: 1500
+                                })
                                 vaciarCarrito()
                 
 
