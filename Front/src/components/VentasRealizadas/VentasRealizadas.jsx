@@ -68,14 +68,9 @@ export const VentasRealizadas = () => {
                         
                        
                     Lista.map((value) => {
-                                   //console.log(Lista)
 
                                    let Date = value.createdAt;
                                    let DateCut = Date.slice(0, 10);
-
-                                   {/* for (var i = 0; i < Lista.length; i++) {
-                                       console.log(value.articulos[i].nombre)
-                                   } */}
 
                                     const arrayArticulos = value.articulos;
 
@@ -90,6 +85,8 @@ export const VentasRealizadas = () => {
                                     
                                     console.log(arrayArticulos);
                                     console.log(descripcion);
+
+
 
 
                         return <tr>
