@@ -82,9 +82,9 @@ export const VentasRealizadas = () => {
                                     }                                    
 
                             return <tr>                            
-                                <td>{value._id}</td>
-                                <td>{productosVendidos}</td>
-                                <td>{cantidadProductosVendidos}</td>
+                                <td id='tdID'>{value._id}</td>
+                                <td id='tdProVen'>{productosVendidos}</td>
+                                <td id='tdCantProVen'>{cantidadProductosVendidos}</td>
                                 <td>${value.total}</td>
                                 <td>{DateCut}</td>
 
@@ -95,7 +95,7 @@ export const VentasRealizadas = () => {
             </Table>
 
             <div className='col-12 col-md-4' >
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary" id='btnVentasRealizadas'>
                     <Link className='nav-link'
                         to="/admin/dasboard"> Volver </Link>
                 </button>

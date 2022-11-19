@@ -1,7 +1,15 @@
-td{
-    width: 1800px;
+#tdID{
+    width: 250px;
 }
 
-button{
+#tdProVen{
+    width: 600px;
+}
+
+#tdCantProVen{
+    width: 250px;
+}
+
+#btnVentasRealizadas{
     margin-left: 720px;
 }
