@@ -95,7 +95,7 @@ export const VentasRealizadas = () => {
             </Table>
 
             <div className='col-12 col-md-4' >
-                <button type="button" class="btn btn-outline-secondary" id='btnVentasRealizadas'>
+                <button type="button" class="btn btn-outline-secondary" id='btnVolverVentasRealizadas'>
                     <Link className='nav-link'
                         to="/admin/dasboard"> Volver </Link>
                 </button>

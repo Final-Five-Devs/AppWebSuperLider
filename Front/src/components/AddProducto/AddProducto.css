@@ -1,0 +1,25 @@
+.containerForm{
+    background-color: rgb(228, 226, 212);
+    margin: auto;
+    padding: 15px;
+    width: 500px;
+    margin-top: 25px;
+    border-radius: 5%;
+}
+
+#Subtitle{
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.form-control{
+    width: 400px;
+    margin-left: 35px;
+}
+
+
+#btnVolverAddProducto{
+    margin-left: 690px;
+    margin-top: 30px;
+
+}

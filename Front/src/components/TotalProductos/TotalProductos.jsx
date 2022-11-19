@@ -3,6 +3,8 @@ import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+import '../TotalProductos/TotalProductos.css'
+
 export const TotalProductos = () => {
 
   const [Lista, setLista] = useState([])
@@ -25,7 +27,6 @@ export const TotalProductos = () => {
   }
   )
   //console.log(Lista)
- 
 
   const borrarPorId  = (id) => {
     const response= 
@@ -51,16 +52,9 @@ export const TotalProductos = () => {
       setLista([]);
       console.log(json);
      }})
-    .catch(err => console.log(err));
-
-
-        
+    .catch(err => console.log(err)); 
       }
     })
-
-
-
-     
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }
 
@@ -69,21 +63,11 @@ const actualizarPorId  = (id) => {
   const arreglo=Lista.filter((item) => item._id === id);
    setListaActualizar(arreglo);
    console.log(arreglo);
-   
- 
-   
  };
 
-
-
   return (
-    <>
+    <><>
 
-      <div className='col-12 col-md-4'>
-        <button type="button" class="btn btn-outline-secondary">
-          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
-        </button>
-      </div>
       <h1>Lista de Productos</h1>
       <Table striped bordered hover>
 
@@ -97,11 +81,13 @@ const actualizarPorId  = (id) => {
             <th>Imagen</th>
           </tr>
         </thead>
+
         <tbody>
+
           {Lista.map((value, index) => {
             return <tr>
 
-              <td >{index + 1}</td>
+              <td>{index + 1}</td>
               <td>{value.nombre}</td>
               <td>{value.descripcion}</td>
               <td>{value.inventario}</td>
@@ -111,14 +97,19 @@ const actualizarPorId  = (id) => {
 
               </td>
 
-              <td><button type="button" class="btn btn-primary" onClick={()=>borrarPorId(value._id)}>Eliminar</button></td>
-              <td><button type="button" class="btn btn-secondary" onClick={()=>actualizarPorId(value._id)}> <Link className='nav-link ' to="/admin/dasboard/actualizar">Actualizar</Link></button></td>
-            </tr>
-          })
-          }
+              <td><button type="button" class="btn btn-primary" onClick={() => borrarPorId(value._id)}>Eliminar</button></td>
+              <td><button type="button" class="btn btn-secondary" onClick={() => actualizarPorId(value._id)}> <Link className='nav-link ' to="/admin/dasboard/actualizar">Actualizar</Link></button></td>
+            </tr>;
+          })}
         </tbody>
       </Table>
-    </>
+    </><div className='col-12 col-md-4'>
+        <button button type = "button"
+        class = "btn btn-outline-secondary"
+        id = 'btnVolverTotalProductos' >
+          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
+        </button>
+      </div></>
 
   )
 

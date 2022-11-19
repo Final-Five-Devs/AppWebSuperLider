@@ -6,6 +6,8 @@ import Swal from 'sweetalert2'
 
 import { Link } from 'react-router-dom';
 
+import '../AddProducto/AddProducto.css'
+
 export class AddProducto extends Component{
     state = {
         nombreProducto:"",
@@ -72,76 +74,73 @@ export class AddProducto extends Component{
 
   
         return(
-            <div className='container text-align-left'>
-            <div className='row'>
-        
-                <h1>Formulario-Crear Producto</h1>
-                        <div className='col-12 col-md-4'>
-                            <button type="button" class="btn btn-outline-secondary" >
-                          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
-                          </button>
-                       </div>
-                
-                <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Nombre producto</Form.Label>
-                        <input 
-                                    type="text" 
-                                    className="form-control"
-                                    onChange={e => this.setState({ nombreProducto: e.target.value})}
-                                    placeholder="Ingrese aca el nombre del producto" />
-    
-                    </Form.Group>
-    
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Descripción</Form.Label>
-                        
-                        <input 
-                                    type="text" 
-                                    className="form-control"
-                                    onChange={e => this.setState({ descripcionProducto: e.target.value})}
-                                    placeholder="Ingrese aca la descripción del Producto" />
-                    </Form.Group>
-    
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Valor</Form.Label>
-                        
-                        <input 
-                                    type="text" 
-                                    className="form-control"
-                                    onChange={e => this.setState({ precioProducto: e.target.value})}
-                                    placeholder="Ingrese aca el precio Producto" />
-                    </Form.Group>
+            <><div className='containerForm'>
+                <div className='row'>
 
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Inventario</Form.Label>
-                        
-                        <input 
-                                    type="text" 
-                                    className="form-control"
-                                    onChange={e => this.setState({ inventarioProducto: e.target.value})}
-                                    placeholder="Ingrese aca el inventario Producto" />
-                    </Form.Group>
-    
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Imagen</Form.Label>
-                        
-                        <input 
-                                    type="text" 
-                                    className="form-control"
-                                    onChange={e => this.setState({ imagenProducto: e.target.value})}
-                                    placeholder="Ingrese aca la imagen del Producto" />
-                    </Form.Group>
-                    <Button onClick={() => {
-                                    this.crearProducto()
-                                }} variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
-            </div>
-        </div>
-    
-    
+                    <h1>Registrar nuevo Producto</h1>
+
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label id="Subtitle">Nombre producto</Form.Label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={e => this.setState({ nombreProducto: e.target.value })}
+                                placeholder="Ingresar el nombre del producto" />
+
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label id="Subtitle">Descripción</Form.Label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={e => this.setState({ descripcionProducto: e.target.value })}
+                                placeholder="Ingresar la descripción del producto" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label id="Subtitle">Valor</Form.Label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={e => this.setState({ precioProducto: e.target.value })}
+                                placeholder="Ingresar el valor del producto" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label id="Subtitle">Inventario</Form.Label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={e => this.setState({ inventarioProducto: e.target.value })}
+                                placeholder="Ingresar el stock del producto" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label id="Subtitle">Imagen</Form.Label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={e => this.setState({ imagenProducto: e.target.value })}
+                                placeholder="Ingresar la imagen del producto" />
+                        </Form.Group>
+
+                        <Button onClick={() => {
+                            this.crearProducto();
+                        } } variant="primary" type="submit">
+                            Registrar producto
+                        </Button>
+                    </Form>
+                </div>
+            </div><div className='col-12 col-md-4'>
+                    <button button type = "button"
+                    class = "btn btn-outline-secondary"
+                    id = 'btnVolverAddProducto' >
+                        <Link className='nav-link'
+                            to="/admin/dasboard"> Volver </Link>
+                    </button>
+                </div></>
         )
     }
 }
