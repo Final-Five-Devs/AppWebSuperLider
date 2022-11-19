@@ -55,7 +55,7 @@ export const VentasRealizadas = () => {
                 <thead>
                     <tr>
                         <th>Código venta</th>
-                        <th>Descripción venta</th>
+                        <th>Productos vendidos</th>
                         <th>Monto total venta</th>
                         <th>Fecha venta</th>
                         
@@ -74,25 +74,31 @@ export const VentasRealizadas = () => {
 
                                     const arrayArticulos = value.articulos;
 
-                                    var descripcion = [];
+                                    var productosVendidos = [];
+                                    var cantidadProductosVendidos = 0;
                                     
 
                                     for (var i = 0; i < arrayArticulos.length; i++) {
-                                        console.log(arrayArticulos[i].nombre)
-                                        descripcion.push(arrayArticulos[i].nombre + " ");
+                                        //console.log(arrayArticulos[i].nombre)
+                                        productosVendidos.push(arrayArticulos[i].nombre + " ");
                                         
                                     }
                                     
-                                    console.log(arrayArticulos);
-                                    console.log(descripcion);
+                                    //console.log(arrayArticulos);
+                                    //console.log(productosVendidos);
 
+                                    for (var i = 0; i < arrayArticulos.length; i++){
+                                        cantidadProductosVendidos.push(arrayArticulos[i].inventarioResta)
+                                    }
 
+                                    console.log(cantidadProductosVendidos);
+                                    
 
 
                         return <tr>
                             
                             <td>{value._id}</td>
-                            <td>{descripcion}</td>
+                            <td>{productosVendidos}</td>
                             <td>${value.total}</td>
                             <td>{DateCut}</td>
 
