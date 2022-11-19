@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import {Link} from 'react-router-dom';
 
+import '../VentasRealizadas/VentasRealizadas.css'
+
 export const VentasRealizadas = () => {
    
     const [Lista, setLista] = useState([])
@@ -56,17 +58,14 @@ export const VentasRealizadas = () => {
                     <tr>
                         <th>Código venta</th>
                         <th>Productos vendidos</th>
+                        <th>Cantidad total de productos</th>
                         <th>Monto total venta</th>
-                        <th>Fecha venta</th>
-                        
+                        <th>Fecha venta</th> 
                     </tr>
                 </thead>
 
                 <tbody>
-                
-                    {
-                        
-                       
+                    { 
                     Lista.map((value) => {
 
                                    let Date = value.createdAt;
@@ -77,33 +76,20 @@ export const VentasRealizadas = () => {
                                     var productosVendidos = [];
                                     var cantidadProductosVendidos = 0;
                                     
-
                                     for (var i = 0; i < arrayArticulos.length; i++) {
-                                        //console.log(arrayArticulos[i].nombre)
                                         productosVendidos.push(arrayArticulos[i].nombre + " ");
-                                        
-                                    }
-                                    
-                                    //console.log(arrayArticulos);
-                                    //console.log(productosVendidos);
+                                        cantidadProductosVendidos += arrayArticulos[i].inventarioResta;                                        
+                                    }                                    
 
-                                    for (var i = 0; i < arrayArticulos.length; i++){
-                                        cantidadProductosVendidos.push(arrayArticulos[i].inventarioResta)
-                                    }
+                            return <tr>                            
+                                <td>{value._id}</td>
+                                <td>{productosVendidos}</td>
+                                <td>{cantidadProductosVendidos}</td>
+                                <td>${value.total}</td>
+                                <td>{DateCut}</td>
 
-                                    console.log(cantidadProductosVendidos);
-                                    
-
-
-                        return <tr>
-                            
-                            <td>{value._id}</td>
-                            <td>{productosVendidos}</td>
-                            <td>${value.total}</td>
-                            <td>{DateCut}</td>
-
-                        </tr>
-                    })
+                            </tr>
+                        })
                     }
                 </tbody>
             </Table>
