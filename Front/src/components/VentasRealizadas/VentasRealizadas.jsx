@@ -35,19 +35,7 @@ export const VentasRealizadas = () => {
                 
   )
 
-  const reccorerArray=()=> {
-        Lista.forEach((element,index) => {
-
-                //console.log("el valor del elemento es: "+JSON.stringify(element)+" el indice del elemento es: ");
-
-        });    
-    
-    
-
-  }
-
-
-  reccorerArray();
+ 
   //console.log(Lista)
                       
     return (
@@ -77,7 +65,7 @@ export const VentasRealizadas = () => {
                                     var cantidadProductosVendidos = 0;
                                     
                                     for (var i = 0; i < arrayArticulos.length; i++) {
-                                        productosVendidos.push(arrayArticulos[i].nombre + " ");
+                                        productosVendidos.push(arrayArticulos[i].nombre + ", ");
                                         cantidadProductosVendidos += arrayArticulos[i].inventarioResta;                                        
                                     }                                    
 

@@ -2,13 +2,20 @@ import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { UpdProducto } from '../UpdProducto/UpdProducto';
+import Modal from '../Modal/Modal';
+import { UseModal } from '../Modal/UseModal';
 
-import '../TotalProductos/TotalProductos.css'
+
+
 
 export const TotalProductos = () => {
 
+  const [isOpenUpdProducto, openUpdProducto, closeUpdProducto] = UseModal(false);
   const [Lista, setLista] = useState([])
-  const [ListaActualizar, setListaActualizar] = useState([])
+  const [array,setArray]=useState([])
+ 
+
 
   useEffect(() => {
     if (Lista == "") {
@@ -26,48 +33,59 @@ export const TotalProductos = () => {
     }
   }
   )
-  //console.log(Lista)
+ 
 
-  const borrarPorId  = (id) => {
-    const response= 
 
-    Swal.fire({
-      title: '¿Está seguro que desea eliminar el producto?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'si, eliminar!'
-    }).then((response) => {
-      if (response.isConfirmed) {
+  const borrarPorId = (id) => {
+    const response =
+      Swal.fire({
+        title: '¿Está seguro que desea eliminar el producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'si, eliminar!'
+      }).then((response) => {
+        if (response.isConfirmed) {
 
-    // DELETE request using fetch inside useEffect React hook
-    fetch('/api/producto/'+id, { method: 'DELETE' })
-    .then(response => response.json()) 
-    .then(json => {if(json.success==true){
-      Swal.fire(
-        'Eliminado!',
-        'Su producto ha sido eliminado.',
-        'Hecho')
-      setLista([]);
-      console.log(json);
-     }})
-    .catch(err => console.log(err)); 
-      }
-    })
-// empty dependency array means this effect will only run once (like componentDidMount in classes)
-}
+          // DELETE request using fetch inside useEffect React hook
+          fetch('/api/producto/' + id, { method: 'DELETE' })
+            .then(response => response.json())
+            .then(json => {
+              if (json.success == true) {
+                Swal.fire(
+                  'Eliminado!',
+                  'Su producto ha sido eliminado.',
+                  'Hecho')
+                setLista([]);
+                console.log(json);
+              }
+            })
+            .catch(err => console.log(err));
 
-const actualizarPorId  = (id) => {
-  
-  const arreglo=Lista.filter((item) => item._id === id);
-   setListaActualizar(arreglo);
-   console.log(arreglo);
- };
+        }
+      })
+  }
+
+
+  function actualizarProducto (id){
+
+    const arr=Lista.filter((item) => item._id == id)
+    const arrProductos=arr[0];
+    setArray(arrProductos);
+    openUpdProducto();
+   
+  }
 
   return (
-    <><>
+    <>
 
+
+      <div className='col-12 col-md-4'>
+        <button type="button" class="btn btn-outline-secondary">
+          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
+        </button>
+      </div>
       <h1>Lista de Productos</h1>
       <Table striped bordered hover>
 
@@ -79,15 +97,18 @@ const actualizarPorId  = (id) => {
             <th>Unidades Disponibles</th>
             <th>Precio</th>
             <th>Imagen</th>
+
           </tr>
         </thead>
-
         <tbody>
-
           {Lista.map((value, index) => {
+            //console.log(test(value._id))
+            //console.log("depues  va value")
+            //console.log(value)
+
             return <tr>
 
-              <td>{index + 1}</td>
+              <td >{index + 1}</td>
               <td>{value.nombre}</td>
               <td>{value.descripcion}</td>
               <td>{value.inventario}</td>
@@ -98,18 +119,22 @@ const actualizarPorId  = (id) => {
               </td>
 
               <td><button type="button" class="btn btn-primary" onClick={() => borrarPorId(value._id)}>Eliminar</button></td>
-              <td><button type="button" class="btn btn-secondary" onClick={() => actualizarPorId(value._id)}> <Link className='nav-link ' to="/admin/dasboard/actualizar">Actualizar</Link></button></td>
-            </tr>;
-          })}
+
+              <td>
+                <button ype="button" class="btn btn-secondary" onClick={() => actualizarProducto(value._id)}>Actualizar</button>
+
+                <Modal isOpen={isOpenUpdProducto} closeModal={closeUpdProducto}>
+                  <UpdProducto item={array}></UpdProducto>
+                </Modal>
+               
+              </td>
+             
+            </tr>
+          })
+          }
         </tbody>
       </Table>
-    </><div className='col-12 col-md-4'>
-        <button button type = "button"
-        class = "btn btn-outline-secondary"
-        id = 'btnVolverTotalProductos' >
-          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
-        </button>
-      </div></>
+    </>
 
   )
 

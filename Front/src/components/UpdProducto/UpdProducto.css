@@ -1,0 +1,14 @@
+.boton{
+
+    margin-left: .5em;
+}
+
+Form {
+
+        margin:auto;
+        padding: 1em;
+        border: 1px solid #CCC;
+        border-radius: 1em;
+       
+}
+
