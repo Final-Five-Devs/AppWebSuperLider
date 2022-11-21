@@ -3,11 +3,14 @@ import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2'
 import "./UpdProducto.css";
-
+import Modal from '../Modal/Modal';
+import { UseModal } from '../Modal/UseModal';
 
 
 
 export const UpdProducto=(props)=>{
+    const [isOpenUpdProducto, openUpdProducto, closeUpdProducto] = UseModal(false);
+
     const[datos,setDatos]=useState({
         nombre:props.item.nombre,
         descripcion:props.item.descripcion,
@@ -64,6 +67,7 @@ export const UpdProducto=(props)=>{
         
 
          .catch(err => console.log(err));
+        
 
     }
 
