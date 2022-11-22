@@ -2,8 +2,7 @@ import { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2'
-
-
+import Sidebar from '../admin/Sidebar';
 import { Link } from 'react-router-dom';
 
 import '../AddProducto/AddProducto.css'
@@ -74,7 +73,9 @@ export class AddProducto extends Component{
 
   
         return(
-            <><div className='containerForm'>
+            <>
+                <Sidebar></Sidebar>
+                <div className='containerForm'>
                 <div className='row'>
 
                     <h1>Registrar nuevo Producto</h1>
@@ -133,14 +134,9 @@ export class AddProducto extends Component{
                         </Button>
                     </Form>
                 </div>
-            </div><div className='col-12 col-md-4'>
-                    <button button type = "button"
-                    class = "btn btn-outline-secondary"
-                    id = 'btnVolverAddProducto' >
-                        <Link className='nav-link'
-                            to="/admin/dasboard"> Volver </Link>
-                    </button>
-                </div></>
+            </div>
+            
+        </>
         )
     }
 }

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UpdProducto } from '../UpdProducto/UpdProducto';
 import Modal from '../Modal/Modal';
 import { UseModal } from '../Modal/UseModal';
+import Sidebar from '../admin/Sidebar';
 
 
 
@@ -79,13 +79,8 @@ export const TotalProductos = () => {
 
   return (
     <>
+      <Sidebar></Sidebar>
 
-
-      <div className='col-12 col-md-4'>
-        <button type="button" class="btn btn-outline-secondary">
-          <Link className='nav-link' to="/admin/dasboard">Volver</Link>
-        </button>
-      </div>
       <h1>Lista de Productos</h1>
       <Table striped bordered hover>
 
@@ -97,15 +92,14 @@ export const TotalProductos = () => {
             <th>Unidades Disponibles</th>
             <th>Precio</th>
             <th>Imagen</th>
+            <th>Borrar</th>
+            <th>Actualizar</th>
 
           </tr>
         </thead>
         <tbody>
           {Lista.map((value, index) => {
-            //console.log(test(value._id))
-            //console.log("depues  va value")
-            //console.log(value)
-
+           
             return <tr>
 
               <td >{index + 1}</td>

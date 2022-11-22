@@ -9,89 +9,90 @@ import '../Header/Header.css'
 
 import "./Header.css"
 
-export const Header = ({size}) => {
+export const Header = ({ size }) => {
   const [user] = useAuthState(auth);
 
 
   return (
     <Fragment>
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container-fluid">
-        
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          
-          <div className='navbar row'>
-            <div className='col-12 col-md-2'>
-            <div className='navbar-brand'>
-              <div>
-              <a href="/"><img src="./Logo_Super_PNG.png" alt="SuperMarket" width={200} height={200}></img></a>
-              {/*<Link to ="/"></Link>*/}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div className="container-fluid">
+
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <div className='navbar row'>
+                <div className='col-12 col-md-2'>
+                  <div className='navbar-brand'>
+                 
+                    <Link to ="/"><a><img src="./Logo_Super_PNG.png" alt="SuperMarket" width={200} height={200}></img></a></Link>
+                  
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div className='col-12 col-md-15'>
+                <div className="input-group">
+              
+              {/*para llamar al home*/}
+              <li class="nav-item">
+                <Link className='nav-link active' to="/">Home</Link>
+              </li> 
+                  <input
+                    type="text"
+                    id="search_field"
+                    class="form-control"
+                    placeholder='¿Qué producto busca?'></input>
+                  <div class="input-group-append">
+                    <button id="search-btn" class="btn">
+                      <i class="fa fa-search-plus fa-2x text-white" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </ul>
+
+          </div>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className="cart">
+
+            <li className="nav-item">
+              <Link className='nav-link' to="/CarroCompras"><box-icon name='cart'></box-icon>
+                <span >{size}</span>
+              </Link>
+            </li>
+           
+          </div>
+
+          <div className="col-12 col-md-3 mt-2 mt-md-0 text-center">
+            <div className="ml-4 dropdown d-inline">
+              <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button"
+                id="dropDownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Mi cuenta</span></Link>
+              <div className='dropdown-menu' aria-labelledby='dropDownMenu'>
+                {
+                  user ? <Link className="dropdown-item" to="/admin/dasboard">Adm. Productos</Link> : ''
+                }
+
+
+                <Link className="dropdown-item" to="/login">Mi cuenta</Link>
+                {
+                  user ? <Link className="dropdown-item" to="/" onClick={() => logout()}>Cerrar Sesion</Link> : ''
+                }
 
               </div>
             </div>
           </div>
-          </div>
-
-            {/*Home
-            <li class="nav-item">
-              <Link className='nav-link active' to="/">Home</Link>
-            </li>  */}
-
-          <div className='col-12 col-md-15'>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            id="search_field"
-                            class="form-control"
-                            placeholder='¿Qué producto busca?'></input>
-                        <div class="input-group-append">
-                            <button id="search-btn" class="btn">
-                                <i class="fa fa-search-plus fa-2x text-white" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-          </ul>
-              
-        </div>
-      </div>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <div className="cart">
-                  
-                      <li className="nav-item">
-                              <Link className='nav-link' to="/CarroCompras"><box-icon name='cart'></box-icon>
-                              <span >{size}</span>
-                              </Link>
-                      </li>
-                      
-                </div>
-
-                <div className="col-12 col-md-3 mt-2 mt-md-0 text-center">
-                    <div className="ml-4 dropdown d-inline">
-                        <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button"
-                            id="dropDownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>Mi cuenta</span></Link>
-                        <div className='dropdown-menu' aria-labelledby='dropDownMenu'>
-                          {
-                            user ? <Link className="dropdown-item" to="/admin/dasboard">Adm. Productos</Link> : ''
-                          }
-                            
-                            
-                            <Link className="dropdown-item" to="/login">Mi cuenta</Link>
-                          {
-                            user ?  <Link className="dropdown-item" to="/" onClick={() => logout()}>Cerrar Sesion</Link> : ''
-                          }
-                          
-                        </div>
-                    </div>
-                    </div>
-              
+         
           {/*    <div>
                 <li class="nav-item">
                 <Link className='nav-link' to="/nuevo">Login</Link>
@@ -99,7 +100,7 @@ export const Header = ({size}) => {
             </div> */}
         </ul>
 
-    </nav>
+      </nav>
 
     </Fragment>
 

@@ -3,13 +3,12 @@ import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2'
 import "./UpdProducto.css";
-import Modal from '../Modal/Modal';
-import { UseModal } from '../Modal/UseModal';
+
 
 
 
 export const UpdProducto=(props)=>{
-    const [isOpenUpdProducto, openUpdProducto, closeUpdProducto] = UseModal(false);
+   
 
     const[datos,setDatos]=useState({
         nombre:props.item.nombre,
@@ -35,9 +34,7 @@ export const UpdProducto=(props)=>{
 
     const enviarDatos =(event) =>{
         event.preventDefault();
-        console.log(datos.nombre+" "+datos.descripcion)
-
-        
+                
         fetch('/api/producto/'+props.item._id, {
 
 
@@ -63,11 +60,11 @@ export const UpdProducto=(props)=>{
               })
             
         
-
+              
         
 
          .catch(err => console.log(err));
-        
+      
 
     }
 
@@ -145,6 +142,10 @@ export const UpdProducto=(props)=>{
                 <Button className="boton" variant="secondary" type="submit">
                     Actualizar
                 </Button>
+               
+                
+
+              
             </Form>
            
         </div>

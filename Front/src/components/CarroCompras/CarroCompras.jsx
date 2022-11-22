@@ -32,53 +32,55 @@ const CarroCompras = ({ cart, setCart, handleChange }) => {
     handlePrice();
     
   });
-  const ActualizarInventario = () => {
 
-    cart.forEach(element => {
-      const data = { inventario: element.inventario-element.inventarioResta };
-    
-                   fetch('/api/producto/'+element._id, {
-                              method: "PUT",
-                              body: JSON.stringify(data),
-                              headers: {"Content-type": "application/json; charset=UTF-8"}
-                              })
-                              .then(response => response.json()) 
-                              .then(json => console.log(json))
-                              .catch(err => console.log(err));
-     
-    
-            
-            
-               
+  {/*Funcion que consulta y actualiza */}
+  const ActualizarInventario = () => { if(Object.entries(cart).length !== 0){
+
+                              cart.forEach(element => {
+                                const data = { inventario: element.inventario-element.inventarioResta };
+                              
+                                            fetch('/api/producto/'+element._id, {
+                                                        method: "PUT",
+                                                        body: JSON.stringify(data),
+                                                        headers: {"Content-type": "application/json; charset=UTF-8"}
+                                                        })
+                                                        .then(response => response.json()) 
+                                                        .then(json => console.log(json))
+                                                        .catch(err => console.log(err));
+                              
+                              
+                                      
+                                      
+                                        
 
 
 
-      
-    });
-    console.log(cart);
-    const compra={ articulos: cart,
-                  total:precio            
-    };
-            fetch('/api/ventas/nuevo', {
-                                method: "POST",
-                                body: JSON.stringify(compra),
-                                headers: {"Content-type": "application/json; charset=UTF-8"}
-                                })
-                                .then(response => response.json()) 
-                                .then(json => console.log(json))
-                                .catch(err => console.log(err));
+                                
+                              });
+                            // console.log(cart);
+                              const compra={ articulos: cart,
+                                            total:precio            
+                              };
+                                      fetch('/api/ventas/nuevo', {
+                                                          method: "POST",
+                                                          body: JSON.stringify(compra),
+                                                          headers: {"Content-type": "application/json; charset=UTF-8"}
+                                                          })
+                                                          .then(response => response.json()) 
+                                                          .then(json => console.log(json))
+                                                          .catch(err => console.log(err));
 
-                                console.log(compra);
-                                Swal.fire({
-                                  position: 'top-center',
-                                  icon: 'success',
-                                  title: 'Compra realizada con exito',
-                                  showConfirmButton: false,
-                                  timer: 1500
-                                })
-                                vaciarCarrito()
+                                                          console.log(compra);
+                                                          Swal.fire({
+                                                            position: 'top-center',
+                                                            icon: 'success',
+                                                            title: 'Compra realizada con exito',
+                                                            showConfirmButton: false,
+                                                            timer: 1500
+                                                          })
+                                                          vaciarCarrito()
                 
-
+                                                        }
 
   }
 

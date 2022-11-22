@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import {Link} from 'react-router-dom';
-
+import Sidebar from '../admin/Sidebar';
 import '../VentasRealizadas/VentasRealizadas.css'
 
 export const VentasRealizadas = () => {
@@ -40,6 +39,7 @@ export const VentasRealizadas = () => {
                       
     return (
         <>
+        <Sidebar></Sidebar>
         <h1>Ventas Realizadas</h1>
             <Table striped bordered hover>
                 <thead>
@@ -65,7 +65,7 @@ export const VentasRealizadas = () => {
                                     var cantidadProductosVendidos = 0;
                                     
                                     for (var i = 0; i < arrayArticulos.length; i++) {
-                                        productosVendidos.push(arrayArticulos[i].nombre + ", ");
+                                        productosVendidos.push(arrayArticulos[i].nombre + " Und: "+arrayArticulos[i].inventarioResta+" ,");
                                         cantidadProductosVendidos += arrayArticulos[i].inventarioResta;                                        
                                     }                                    
 
@@ -82,14 +82,7 @@ export const VentasRealizadas = () => {
                 </tbody>
             </Table>
 
-            <div className='col-12 col-md-4' >
-                <button type="button" class="btn btn-outline-secondary" id='btnVolverVentasRealizadas'>
-                    <Link className='nav-link'
-                        to="/admin/dasboard"> Volver </Link>
-                </button>
-            </div>
-
-
+           
         </>
     )
 }
