@@ -22,11 +22,6 @@ function App() {
     if (arr[ind].inventarioResta === 0) arr[ind].inventarioResta = 1;
     setCart([...arr]);
   };
-  //
-
-
-  
-
   
   
   return (
@@ -40,6 +35,20 @@ function App() {
       </Router>
     </div>
   );
+
+  
 }
+
+const PORT = process.env.PORT
+
+console.log({PORT})
+
+app.listen(PORT, function(){
+  console.log("Servidor escuchando en el puerto " + PORT)
+
+})
+
+
+
 
 export default App;
