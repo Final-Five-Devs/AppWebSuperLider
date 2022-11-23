@@ -39,14 +39,14 @@ function App() {
   
 }
 
-const PORT = process.env.PORT
+/*const PORT = process.env.PORT
 
 console.log({PORT})
 
 app.listen(PORT, function(){
   console.log("Servidor escuchando en el puerto " + PORT)
 
-})
+})*/
 
 
 
