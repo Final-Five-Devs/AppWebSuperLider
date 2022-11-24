@@ -47,7 +47,7 @@ app.use(cors());
   app.disable('view cache');  
 
 
-const root = require('path').join(__dirname, './Front/public')
+const root = require('path').join(__dirname, './Front/build')
 
 
 app.use(express.static(root));
