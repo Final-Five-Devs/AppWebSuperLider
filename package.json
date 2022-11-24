@@ -7,7 +7,8 @@
     "start": "node  index.js",
     "Front": "npm start --prefix Front",
     "vercel-build": "npm install --prefix Front && npm run build --prefix Front",
-    "dev": "concurrently \"npm run start\" \"npm run Front\" "
+    "dev": "concurrently \"npm run start\" \"npm run Front\" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Front && npm run build --prefix Front"
   },
   "author": "Diana Rodriguez",
   "license": "ISC",
