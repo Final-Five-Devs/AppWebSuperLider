@@ -21,7 +21,8 @@ connectDatabase();
 
 const inventario = require('./models/inventario')    
 
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 
  
